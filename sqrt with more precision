@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+long long int square(int n)
+{
+    int l=0,h=n;
+    long long int mid=l+(h-l)/2;
+    long long int ans=-1;
+    while(l<=h)
+    {
+        long long int square=mid*mid;
+        if(square==n)
+        return mid;
+        else if(square<n)
+        {
+            ans=mid;
+            l=mid+1;
+        }
+        else
+        h=mid-1;
+        mid=l+(h-l)/2;
+    }
+    return ans;
+}
+double fract(int n,int precision,int intpart)
+{
+    double factor=1,i,ans=intpart;
+    for(i=0;i<precision;i++)
+    {
+        factor=factor/10;
+    for(double j=ans;j*j<n;j=j+factor)
+    ans=j;
+    }
+    return ans;
+}
+int main()
+{
+    int n;
+     cin>>n;
+     int intpart=square(n);
+     cout<<"The square root is "<<fract(n,3,intpart);
+}
