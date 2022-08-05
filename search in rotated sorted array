@@ -1,0 +1,37 @@
+int pvt(vector<int>& arr,int n)
+{
+    int l=0,h=n-1;
+    int mid=l+(h-l)/2;
+    while(l<h)
+    {
+        if(arr[mid]>=arr[0])
+           l=mid+1;
+        else
+         h=mid; 
+        mid=l+(h-l)/2;
+    }
+    return l;
+}
+int binary(vector<int>& arr,int l,int h,int k)
+{
+    while(l<=h)
+    {
+        int mid=l+(h-l)/2;
+        if(arr[mid]==k)
+            return mid;
+        else if(k>arr[mid])
+            l=mid+1;
+        else
+            h=mid-1;
+    }
+    return -1;
+}
+int findPosition(vector<int>& arr, int n, int k)
+{
+    int pivot=pvt(arr,n);
+    if(k>=arr[pivot] && k<=arr[n-1])
+       return binary(arr,pivot,n-1,k);
+    else
+       return binary(arr,0,pivot-1,k);
+   
+}
