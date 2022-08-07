@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int max(int a[],int n,int k)
+{
+     int max=0,i,j,count=k;
+     for(i=0;i<=n-k;i++)
+     {
+        int sum=0;
+        for(j=i;j<count;j++)
+        {
+            sum+=a[j];
+
+        }
+        count++;
+        if(sum>=max)
+        max=sum;
+     }
+     return max;
+}
+int main()
+{
+    int n,a[20],i,k;
+    cin>>n;
+    for(i=0;i<n;i++)
+    cin>>a[i];
+    cin>>k;
+    cout<<"The maximum photos is "<<max(a,n,k);
+}
