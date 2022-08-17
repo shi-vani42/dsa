@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool check(int a[],int b[])
+    {
+        for(int i=0;i<26;i++)
+        {  if(a[i]!=b[i])
+             return 0;}
+        return 1;
+    }
+    bool checkInclusion(string s1, string s2) {
+      int count1[26]={0};
+        for(int i=0;i<s1.length();i++)
+        {
+            int temp=s1[i]-'a';
+            count1[temp]++;
+        }
+        int i=0,window=s1.length();
+        int count2[26]={0};
+        while(i<window && i<s2.length())
+        {
+            int temp= s2[i]-'a';
+            count2[temp]++;
+            i++;
+        }
+        if(check(count1,count2))
+            return 1;
+        while(i<s2.length())
+        {
+            char newchar=s2[i];
+            int temp=newchar-'a';
+            count2[temp]++;
+            
+            char oldchar=s2[i-window];
+            temp=oldchar-'a';
+            count2[temp]--;
+            i++;
+            if(check(count1,count2))
+            return 1;
+        }
+        return 0;
+    }
+};
