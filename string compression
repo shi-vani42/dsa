@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int n=chars.size(),i=0,ansindex=0,j,count;
+        while(i<n)
+        {
+            j=i+1;
+            while(j<n && chars[i]==chars[j])
+            {
+                j++;
+            }
+            //the vector is traversed completely
+            //or a diff character is encountered
+            chars[ansindex++]=chars[i];
+            count=j-i;
+            if(count>1)
+            { //converting count to string and adding each character in array
+                string c=to_string(count);
+                for(char ch:c)
+                chars[ansindex++]= ch;
+            }
+            i=j;
+        }
+        return ansindex;
+    }
+};
