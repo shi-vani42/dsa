@@ -1,3 +1,4 @@
+//clockwise
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
@@ -7,3 +8,20 @@ public:
                     swap(matrix[i][j],matrix[j][i]);
     }
 };
+//anticlockwise
+vector<vector<int>> rotateMatrix(vector<vector<int>> &matrix)
+{
+   vector<vector<int>>ans;
+    vector<int>v;
+    int row=matrix.size(), col=matrix[0].size();
+     int colIndex = col- 1;
+      while(colIndex >= 0)
+   {
+         for(int i = 0; i<row; i++)
+         v.push_back(matrix[i][colIndex]);
+          ans.push_back(v);
+          v.clear();
+          colIndex--;
+      }
+       return ans;
+}
