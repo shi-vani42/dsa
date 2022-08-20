@@ -1,0 +1,9 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        reverse(matrix.begin(),matrix.end());            //first the whole 2D array is reversed up to down
+            for(int i=0;i<matrix.size();i++)             //swap the symmetric elements
+                for(int j=i+1;j<matrix.size();j++)
+                    swap(matrix[i][j],matrix[j][i]);
+    }
+};
